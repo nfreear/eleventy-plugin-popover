@@ -1,0 +1,28 @@
+{
+  "name": "eleventy-plugin-popover",
+  "license": "MIT",
+  "version": "0.9.0",
+  "type": "module",
+  "main": "index.js",
+  "devDependencies": {
+    "eslint": "^9.39.2",
+    "neostandard": "^0.12.2"
+  },
+  "scripts": {
+    "lint": "npx eslint ."
+  },
+  "description": "Paired shortcode to create a `<toggle-popover>` custom element with declarative shadow DOM.",
+  "keywords": [
+    "eleventy",
+    "eleventy-plugin",
+    "shortcode",
+    "custom-element",
+    "declarative-dom",
+    "anchor-positioning"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nfreear/eleventy-plugin-popover.git"
+  },
+  "author": "Nick Freear"
+}
