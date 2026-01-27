@@ -1,9 +1,13 @@
 {
-  "name": "eleventy-plugin-popover",
+  "name": "toggle-popover",
   "license": "MIT",
   "version": "0.9.0",
   "type": "module",
   "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./eleventy": "./shortcode/togglePopoverShortcode.js"
+  },
   "devDependencies": {
     "eslint": "^9.39.2",
     "neostandard": "^0.12.2"
