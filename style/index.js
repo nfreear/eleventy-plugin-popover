@@ -1,4 +1,3 @@
-//
 export default function cssPaths () {
   return {
     filename: 'toggle-popover.css',
@@ -7,4 +6,4 @@ export default function cssPaths () {
   };
 }
 
-console.debug('CSS Path:', cssPaths());
+// console.debug('CSS Path:', cssPaths());

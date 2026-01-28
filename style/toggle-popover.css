@@ -1,6 +1,6 @@
 
 :host {
-  --tp-button-size: 3rem;
+  --tp-button-size: 3.2rem;
   --tp-button-gap: calc(var(--tp-button-size) / 5);
   --tp-close-size: 1.9rem;
   --tp-hamburger-character: '≡'; /* U+2261 ≡ IDENTICAL TO */
@@ -30,8 +30,7 @@ internal-root {
   }
 
   [ popover ] {
-    padding: 1rem;
-    padding-top: .25rem;
+    padding: .5rem .5rem 1rem 1rem;
   }
 }
 

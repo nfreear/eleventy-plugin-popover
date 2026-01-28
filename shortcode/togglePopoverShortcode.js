@@ -1,4 +1,5 @@
 import renderTogglePopover from '../core/togglePopover.js';
+import copyStylesheetPlugin from './copyStylesheetPlugin.js';
 import cssPaths from '../style/index.js';
 
 export { cssPaths };
@@ -31,6 +32,8 @@ export default function togglePopoverShortcode (eleventyConfig, options = {}) {
   const stylesheetPath = `${cssOutputDir}/${cssPaths().filename}`;
 
   eleventyConfig.addPairedShortcode(shortcode, function (content, buttonLabel = defaultButtonLabel, anchorPosition = defaultAnchorPosition) {
+    // console.log('ENV:', this.eleventy.env);
+
     return renderTogglePopover(content, {
       elementName,
       buttonLabel,
@@ -54,19 +57,5 @@ export default function togglePopoverShortcode (eleventyConfig, options = {}) {
     });
   }
 
-  copyStyleFilePlugin(eleventyConfig, { copyStyleFile, cssOutputDir });
-}
-
-export function copyStyleFilePlugin (eleventyConfig, options = {}) {
-  const { copyStyleFile, cssOutputDir } = options;
-  const PATH = '.';
-
-  if (copyStyleFile) {
-    /** @TODO */
-    // const paths = cssPaths();
-    const cssCopy = {};
-    cssCopy[`${PATH}/style/*.css`] = cssOutputDir;
-
-    eleventyConfig.addPassthroughCopy(cssCopy);
-  }
+  copyStylesheetPlugin(eleventyConfig, { copyStyleFile, cssOutputDir });
 }

@@ -31,13 +31,13 @@ export function togglePopover (htmlContent, options = {}) {
   <internal-root ${renderAttributes(anchorPosition, hideButtonLabel, buttonIcon)}>
   <button part="button" popovertarget="myID" aria-label="${buttonText}">
     <span part="buttonLabel">
-      <slot name="buttonLabel">Button label goes here</slot>
+      <slot name="buttonLabel">Button label</slot>
     </span>
     ${renderButtonIcon(buttonIcon)}
   </button>
   <div part="popover" id="myID" popover>
     ${renderCloseButton(closeButton, closeLabel)}
-    <slot name="popoverContent">Popover content goes here</slot>
+    <slot name="popoverContent">Popover content</slot>
   </div>
 
   </internal-root>
@@ -54,11 +54,13 @@ export function togglePopover (htmlContent, options = {}) {
 
 export function renderAttributes (anchorPosition, hideButtonLabel, buttonIcon) {
   const iconToken = buttonIcon ?? safeToken(buttonIcon);
-  return `
-  ${anchorPosition ? 'data-anchor-position' : ''}
-  ${hideButtonLabel ? 'data-visually-hide' : ''}
-  ${buttonIcon ? `data-button-icon="${iconToken}"` : ''}
-  `;
+  /* eslint-disable */
+  return `${
+    anchorPosition ? 'data-anchor-position' : '' } ${
+    hideButtonLabel ? 'data-visually-hide' : ''} ${
+    buttonIcon ? `data-button-icon="${iconToken}"` : ''
+  }`;
+  /* eslint-enable */
 }
 
 export function renderButtonIcon (buttonIcon) {
@@ -88,9 +90,7 @@ export function renderCloseButton (closeButton, closeLabel) {
 export function renderStylesheetLink (linkStylesheet, stylesheetPath) {
   const cleanCssPath = safeUrl(stylesheetPath);
   return linkStylesheet
-    ? `
-<link rel="stylesheet" href="${cleanCssPath}">
-  `
+    ? `<link rel="stylesheet" href="${cleanCssPath}">`
     : '';
 }
 

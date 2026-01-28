@@ -6,7 +6,7 @@
   "main": "index.js",
   "exports": {
     ".": "./index.js",
-    "./core": "./index.js",
+    "./core": "./core/togglePopover.js",
     "./eleventy": "./shortcode/togglePopoverShortcode.js",
     "./style": "./style/toggle-popover.css"
   },
