@@ -1,6 +1,8 @@
 
 # toggle-popover
 
+[![Node.js][ci-badge]][ci]
+
 ## Eleventy plugin
 
 A paired [shortcode][] to create a `<toggle-popover>` custom element with declarative shadow DOM.
@@ -46,9 +48,10 @@ This server-side JavaScript library builds on the follow [Web APIs][]:
 * License: [MIT][]
 
 [mit]: https://nfreear.mit-license.org/#2026
+[pen]: https://codepen.io/nfreear/pen/LEZOjbb
 [shortcode]: https://www.11ty.dev/docs/shortcodes/#paired-shortcodes
 [liquid]: https://www.11ty.dev/docs/languages/liquid/
-[nunkjucks]: https://www.11ty.dev/docs/languages/nunjucks/
+[nunjucks]: https://www.11ty.dev/docs/languages/nunjucks/
 
 [declare]: https://web.dev/articles/declarative-shadow-dom#how_to_build_a_declarative_shadow_root
 [mdn:anchor]: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Anchor_positioning
@@ -60,3 +63,6 @@ This server-side JavaScript library builds on the follow [Web APIs][]:
 [can-i:custom]: https://caniuse.com/wf-autonomous-custom-elements "96%"
 [can-i:declare]: https://caniuse.com/declarative-shadow-dom "94%"
 [can-i:popover]: https://caniuse.com/wf-popover "88.7%"
+
+[ci]: https://github.com/nfreear/eleventy-plugin-popover/actions/workflows/node.js.yml
+[ci-badge]: https://github.com/nfreear/eleventy-plugin-popover/actions/workflows/node.js.yml/badge.svg

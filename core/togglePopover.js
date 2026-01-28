@@ -1,50 +1,100 @@
-//
-export const _defaults = {
+import { stripHtml, safeUrl, safeToken, safeTagName } from './utilities.js';
+
+export const coreDefaults = {
   elementName: 'toggle-popover',
   buttonLabel: 'Toggle menu',
-  closeLabel: 'Close',
-  anchorPosition: true
+  closeLabel: 'Close menu',
+  anchorPosition: true,
+  closeButton: true,
+  linkStylesheet: true,
+  stylesheetPath: '/css/toggle-popover.css',
+  buttonIcon: false, // Or tokens: 'hamburger', etc. ??
+  hideButtonLabel: false
 };
 
 export function togglePopover (htmlContent, options = {}) {
-  const OPT = { ..._defaults, ...options };
+  const OPT = { ...coreDefaults, ...options };
 
-  const { elementName, buttonLabel, closeLabel, anchorPosition } = OPT;
+  const {
+    elementName, buttonLabel, closeLabel, closeButton, anchorPosition,
+    buttonIcon, linkStylesheet, stylesheetPath, hideButtonLabel
+  } = OPT;
+
   const buttonText = stripHtml(buttonLabel);
-  const closeText = stripHtml(closeLabel);
+  const tagName = safeTagName(elementName);
 
   return `
-<${elementName}>
+<${tagName}>
 <template shadowrootmode="open">
-  <style>
-    ${anchorPosition ? stylesheet() : ''}
-  </style>
+  ${renderStylesheetLink(linkStylesheet, stylesheetPath)}
+
+  <internal-root ${renderAttributes(anchorPosition, hideButtonLabel, buttonIcon)}>
   <button part="button" popovertarget="myID" aria-label="${buttonText}">
-    <i part="buttonLine"></i>
-    <i part="buttonLine"></i>
-    <i part="buttonLine"></i>
     <span part="buttonLabel">
       <slot name="buttonLabel">Button label goes here</slot>
     </span>
+    ${renderButtonIcon(buttonIcon)}
   </button>
   <div part="popover" id="myID" popover>
-    <button part="closeButton" popovertarget="myID" aria-label="${closeText}">
-      <span part="closeLabel">
-        <slot name="closeLabel"></slot>
-      </span>
-    </button>
+    ${renderCloseButton(closeButton, closeLabel)}
     <slot name="popoverContent">Popover content goes here</slot>
   </div>
+
+  </internal-root>
 </template>
+
 <span slot="buttonLabel">${buttonLabel}</span>
 <span slot="closeLabel">${closeLabel}</span>
 <div slot="popoverContent">
   ${htmlContent}
 </div>
-</${elementName}>
+</${tagName}>
   `;
 }
 
+export function renderAttributes (anchorPosition, hideButtonLabel, buttonIcon) {
+  const iconToken = safeToken(buttonIcon);
+  return `
+  ${anchorPosition ? 'data-anchor-position="true"' : ''}
+  ${hideButtonLabel ? 'data-hide-label="true"' : ''}
+  ${buttonIcon ? `data-button-icon="${iconToken}"` : ''}
+  `;
+}
+
+export function renderButtonIcon (buttonIcon) {
+  return buttonIcon
+    ? `
+<span part="buttonIcon">
+  <i part="hr"></i><i part="hr"></i><i part="hr"></i>
+</span>
+  `
+    : '';
+}
+
+export function renderCloseButton (closeButton, closeLabel) {
+  const closeText = stripHtml(closeLabel);
+  return closeButton
+    ? `
+  <button part="closeButton" popovertarget="myID" aria-label="${closeText}">
+    <span part="closeLabel">
+      <slot name="closeLabel">Close</slot>
+    </span>
+  </button>
+  `
+    : '';
+}
+
+/** @TODO: security ! */
+export function renderStylesheetLink (linkStylesheet, stylesheetPath) {
+  const cleanCssPath = safeUrl(stylesheetPath);
+  return linkStylesheet
+    ? `
+<link rel="stylesheet" href="${cleanCssPath}">
+  `
+    : '';
+}
+
+/** @DEPRECATED */
 export function stylesheet () {
   return `
 @supports (position-anchor: --my-name) {
@@ -61,10 +111,6 @@ export function stylesheet () {
   }
 }
   `;
-}
-
-export function stripHtml (inputString) {
-  return inputString.replace(/<[^>]*>?/gm, '');
 }
 
 export default togglePopover;

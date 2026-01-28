@@ -9,20 +9,29 @@
     "./eleventy": "./shortcode/togglePopoverShortcode.js"
   },
   "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
     "eslint": "^9.39.2",
-    "neostandard": "^0.12.2"
+    "neostandard": "^0.12.2",
+    "servor": "^4.0.2"
   },
   "scripts": {
-    "lint": "npx eslint ."
+    "dry-run": "cd plugins; npm publish --dry-run",
+    "clean": "rm -rf _site",
+    "build": "npx @11ty/eleventy",
+    "start": "npx @11ty/eleventy --serve",
+    "lint": "npx eslint .",
+    "lint:fix": "npx eslint --fix"
   },
-  "description": "Paired shortcode to create a `<toggle-popover>` custom element with declarative shadow DOM.",
+  "description": "Eleventy plugin and JS library. A shortcode to create a `<toggle-popover>` custom element with declarative shadow DOM.",
   "keywords": [
     "eleventy",
     "eleventy-plugin",
     "shortcode",
     "custom-element",
     "declarative-dom",
-    "anchor-positioning"
+    "anchor-positioning",
+    "popover",
+    "popover-api"
   ],
   "repository": {
     "type": "git",
