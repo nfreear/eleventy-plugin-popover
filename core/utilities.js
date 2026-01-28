@@ -1,10 +1,13 @@
-//
+/**
+ * Utility and security functions.
+ */
+
 export function stripHtml (inputString) {
   return inputString.replace(/<[^>]*>?/gm, '').replace(/"/gm, '&quot;');
 }
 
 export function safeUrl (inputUrl) {
-  if (!/^[\w_/.:-]$/.test(inputUrl)) {
+  if (!/^[\w_/.:-]+$/.test(inputUrl)) {
     throw new Error(`Invalid inputUrl: ${inputUrl}`);
   }
   return inputUrl.replace(/[^\w_/.:-]/g, '');

@@ -1,61 +1,37 @@
-<!doctype html>
-<html lang="en">
-
-<title>toggle-popover demo</title>
+---
+layout: demo_page
+---
 
 <h1>toggle-popover demo</h1>
 
 
-<toggle-popover>
-  <template shadowrootmode="open">
-    <style>
-      @supports (position-anchor: --my-name) {
-        button {
-          anchor-name: --my-popover;
-        }
-
-        [ popover ] {
-          margin-top: .1rem;
-          /* position-anchor: --my-popover; */
-          /* Bug in Firefox 147?! */
-          anchor-scope: --my-popover;
-          position: fixed;
-          position-area: bottom center;
-        }
-      }
-    </style>
-    <button part="button" popovertarget="myID" aria-label="Translations">
-      <i part="buttonLine"></i>
-      <i part="buttonLine"></i>
-      <i part="buttonLine"></i>
-      <span part="buttonLabel">
-        <slot name="buttonLabel">Button label goes here</slot>
-      </span>
-    </button>
-    <div part="popover" id="myID" popover>
-      <button part="closeButton" popovertarget="myID" aria-label="Close">
-        <span part="closeLabel">
-          <slot name="closeLabel"></slot>
-        </span>
-      </button>
-      <slot name="popoverContent">Popover content goes here</slot>
-    </div>
-  </template>
-  
-  <span slot="buttonLabel">Translations</span>
-  <span slot="closeLabel">Close</span>
-  <div slot="popoverContent">
-
-    <nav>
-      <ul>
-        <li><a href="#">Language A</a></li>
-        <li><a href="#">Language B</a></li>
-        <li><a href="#">...</a></li>
-      </ul>
-    </nav>
-
-  </div>
-</toggle-popover>
+{% togglePopover 'Translations' %}
+  <nav aria-label="Translations" id="translations">
+    <ul>
+      <li><a href="#ar" lang="ar">اَلْعَرَبِيَّةُ <i lang="en">(Arabic)</i></a>
+      <li><a href="#en" lang="en">English</a>
+      <li><a href="#es" lang="es">Español</a>
+      <li><a href="#fr" lang="fr">Français</a>
+      <li><a href="#zh-Hans" lang="zh-Hans">简化字 <i lang="en">(Simplified Chinese)</i></a>
+      <li><a href="#zh-Hant" lang="zh-Hant">正體字 <i lang="en">(Traditional Chinese)</i></a>
+      <li><a href="#…" lang="…">…</a>
+    </ul>
+  </nav>
+{% endtogglePopover %}
 
 
-</html>
+<hr>
+
+
+{% hamburgerPopover %}
+  <nav aria-label="Main navigation">
+    <ul>
+      <li><a href="#pageOne">Page One</a>
+      <li><a href="#pageTwo">Page Two</a>
+      <li><a href="#pageThree">Page Three</a>
+      <li><a href="#pageFour">Page Four</a>
+      <li><a href="#pageFive">Page Five</a>
+      <li><a href="#...">…</a>
+    </ul>
+  </nav>
+{% endhamburgerPopover %}

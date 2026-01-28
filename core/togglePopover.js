@@ -3,7 +3,7 @@ import { stripHtml, safeUrl, safeToken, safeTagName } from './utilities.js';
 export const coreDefaults = {
   elementName: 'toggle-popover',
   buttonLabel: 'Toggle menu',
-  closeLabel: 'Close menu',
+  closeLabel: 'Close',
   anchorPosition: true,
   closeButton: true,
   linkStylesheet: true,
@@ -53,10 +53,10 @@ export function togglePopover (htmlContent, options = {}) {
 }
 
 export function renderAttributes (anchorPosition, hideButtonLabel, buttonIcon) {
-  const iconToken = safeToken(buttonIcon);
+  const iconToken = buttonIcon ?? safeToken(buttonIcon);
   return `
-  ${anchorPosition ? 'data-anchor-position="true"' : ''}
-  ${hideButtonLabel ? 'data-hide-label="true"' : ''}
+  ${anchorPosition ? 'data-anchor-position' : ''}
+  ${hideButtonLabel ? 'data-visually-hide' : ''}
   ${buttonIcon ? `data-button-icon="${iconToken}"` : ''}
   `;
 }

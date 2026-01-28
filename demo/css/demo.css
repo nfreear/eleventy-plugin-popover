@@ -1,0 +1,38 @@
+
+toggle-popover {
+  display: block;
+  margin: 2rem 0;
+
+  ul {
+    list-style: none;
+    line-height: 1.3;
+    margin: 1.5rem 0 0;
+    min-width: 8rem;
+    padding: 0;
+
+    li {
+      margin: .7rem 0;
+    }
+  }
+
+  #translations {
+    ul {
+      min-width: 11rem;
+
+      i {
+        font-size: small;
+      }
+    }
+  }
+}
+
+body {
+  margin: auto;
+  max-width: 34rem;
+  padding: 0 1rem;
+}
+
+* {
+  outline-offset: .25rem;
+  text-underline-offset: .15rem;
+}

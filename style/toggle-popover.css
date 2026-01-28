@@ -1,0 +1,115 @@
+
+:host {
+  --tp-button-size: 3rem;
+  --tp-button-gap: calc(var(--tp-button-size) / 5);
+  --tp-close-size: 1.9rem;
+  --tp-hamburger-character: '≡'; /* U+2261 ≡ IDENTICAL TO */
+  --tp-close-character: '×'; /* U+00D7 × MULTIPLICATION SIGN (&times;) */
+}
+
+@supports (position-anchor: --my-name) {
+  [ data-anchor-position ] {
+    button {
+      anchor-name: --my-popover;
+    }
+
+    [ popover ] {
+      margin-top: .1rem;
+      /* position-anchor: --my-popover; */ /* Bug in Firefox 147?! */
+      anchor-scope: --my-popover;
+      position: fixed;
+      position-area: bottom center;
+    }
+  }
+}
+
+internal-root {
+  & > button {
+    font-size: inherit;
+    padding: .5rem 1rem;
+  }
+
+  [ popover ] {
+    padding: 1rem;
+    padding-top: .25rem;
+  }
+}
+
+[ data-hamburger = "line" ],
+[ data-button-icon = "line" ] {
+  & > button {
+    height: var(--tp-button-size, 3rem);
+    width: var(--tp-button-size, 3rem);
+    padding: 0 var(--tp-button-gap, .5rem);
+
+    [ part = hr ],
+    [ part = buttonLine ] {
+      display: block;
+      border-top: 3px solid currentColor;
+      border-radius: 4px;
+      margin: var(--tp-button-gap, .5rem) 0;
+    }
+  }
+}
+
+[ data-button-icon = "hamburger" ] {
+  & > button {
+    height: var(--tp-button-size, 3rem);
+    width: var(--tp-button-size, 3rem);
+    padding: var(--tp-button-gap, .5rem);
+
+    /* https://en.wikipedia.org/wiki/Hamburger_button */
+    &::after {
+      content: var(--tp-hamburger-character, '≡'); /* U+2261 ≡ IDENTICAL TO */
+      X_content: '☰'; /* U+2630 ☰ TRIGRAM FOR HEAVEN */
+      font-size: 3.5rem;
+      line-height: 1rem;
+      vertical-align: middle;
+    }
+  }
+}
+
+[ data-button-icon = "waffle" ] {
+  & > button {
+    height: var(--tp-button-size, 3rem);
+    width: var(--tp-button-size, 3rem);
+    padding: var(--tp-button-gap, .5rem);
+
+    /* https://en.wikipedia.org/wiki/Hamburger_button */
+    &::after {
+      content: '𓃑'; /* U+130D1 𓃑 EGYPTIAN HIEROGLYPH D067H */
+      font-size: 1.65rem;
+      line-height: 1rem;
+      vertical-align: middle;
+    }
+  }
+}
+
+[ data-button-icon ],
+[ data-hamburger ] {
+  [ part = closeButton ] {
+    float: right;
+    height: var(--tp-close-size, 1.8rem);
+    width: var(--tp-close-size, 1.8rem);
+
+    &::after {
+      content: var(--tp-close-character, 'X');
+      font-size: 1.5rem;
+      vertical-align: middle;
+    }
+  }
+}
+
+[ data-visually-hide ] {
+  [ part = buttonLabel ],
+  [ part = closeLabel ] {
+    position: absolute;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+  }
+}
+
+* {
+  outline-offset: .25rem;
+}

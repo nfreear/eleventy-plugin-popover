@@ -1,7 +1,7 @@
 import renderTogglePopover from '../core/togglePopover.js';
-import cssPath from '../style/index.js';
+import cssPaths from '../style/index.js';
 
-export { cssPath };
+export { cssPaths };
 
 /**
  * Paired shortcode to create a `<toggle-popover>` custom element with declarative shadow DOM.
@@ -15,7 +15,7 @@ export const shortcodeDefaults = {
   defaultButtonLabel: 'Toggle menu',
   defaultAnchorPosition: true,
   copyStyleFile: true, // Implies copy and link ??
-  cssOutputDir: 'css',
+  cssOutputDir: '/css',
   buttonIcon: false, // Or tokens: 'hamburger', etc. ??
   hideButtonLabel: false
 };
@@ -23,8 +23,12 @@ export const shortcodeDefaults = {
 export default function togglePopoverShortcode (eleventyConfig, options = {}) {
   const OPT = { ...shortcodeDefaults, ...options };
 
-  const { shortcode, elementName, defaultButtonLabel, defaultAnchorPosition,
-    hamburgerShortcode, copyStyleFile } = OPT;
+  const {
+    shortcode, elementName, defaultButtonLabel, defaultAnchorPosition,
+    hamburgerShortcode, copyStyleFile, cssOutputDir
+  } = OPT;
+
+  const stylesheetPath = `${cssOutputDir}/${cssPaths().filename}`;
 
   eleventyConfig.addPairedShortcode(shortcode, function (content, buttonLabel = defaultButtonLabel, anchorPosition = defaultAnchorPosition) {
     return renderTogglePopover(content, {
@@ -32,7 +36,7 @@ export default function togglePopoverShortcode (eleventyConfig, options = {}) {
       buttonLabel,
       anchorPosition,
       linkStylesheet: copyStyleFile,
-      // stylesheetPath: null,
+      stylesheetPath,
     });
   });
 
@@ -43,15 +47,26 @@ export default function togglePopoverShortcode (eleventyConfig, options = {}) {
         buttonLabel,
         anchorPosition,
         linkStylesheet: copyStyleFile,
-        // stylesheetPath: null,
-        buttonIcon: true,
+        stylesheetPath,
+        buttonIcon: 'line',
         hideButtonLabel: true
       });
     });
   }
 
+  copyStyleFilePlugin(eleventyConfig, { copyStyleFile, cssOutputDir });
+}
+
+export function copyStyleFilePlugin (eleventyConfig, options = {}) {
+  const { copyStyleFile, cssOutputDir } = options;
+  const PATH = '.';
+
   if (copyStyleFile) {
     /** @TODO */
-    // eleventyConfig.addPassthroughCopy('images/*');
+    // const paths = cssPaths();
+    const cssCopy = {};
+    cssCopy[`${PATH}/style/*.css`] = cssOutputDir;
+
+    eleventyConfig.addPassthroughCopy(cssCopy);
   }
 }
