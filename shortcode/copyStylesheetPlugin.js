@@ -1,5 +1,4 @@
-// ESLint parser error.
-import PKG from '../package.json' with { type: 'json' };
+import PKG from '../core/package-json.js';
 
 /**
  *
@@ -15,7 +14,7 @@ export default function copyStylesheetPlugin (eleventyConfig, options = {}) {
   }
 }
 
-export function getPkgPath() {
+export function getPkgPath () {
   return isInNodeModules() ? `./node_modules/${PKG.name}` : '.';
 }
 

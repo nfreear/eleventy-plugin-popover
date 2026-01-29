@@ -1,6 +1,4 @@
-import debug from 'debug';
-// import { togglePopoverShortcode } from './index.js';
-import togglePopoverShortcode from 'toggle-popover/eleventy';
+import togglePopoverShortcode from './index.js';
 
 /**
  * Configure Test Eleventy.
@@ -8,10 +6,6 @@ import togglePopoverShortcode from 'toggle-popover/eleventy';
  * @see https://www.11ty.dev/docs/config/
  */
 export default async function (eleventyConfig) {
-  const debugLog = debug('TP:config');
-
-  debugLog('Loading config…');
-
   // Order matters, put this at the top of your configuration file.
   eleventyConfig.setInputDirectory('demo');
 

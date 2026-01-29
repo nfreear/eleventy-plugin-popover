@@ -1,5 +1,8 @@
 import { stripHtml, safeUrl, safeToken, safeTagName } from './utilities.js';
 
+/**
+ * Core library function to render the `<toggle-popover>` custom element.
+ */
 export const coreDefaults = {
   elementName: 'toggle-popover',
   buttonLabel: 'Toggle menu',
@@ -68,8 +71,7 @@ export function renderButtonIcon (buttonIcon) {
     ? `
 <span part="buttonIcon">
   <i part="hr"></i><i part="hr"></i><i part="hr"></i>
-</span>
-  `
+</span>`
     : '';
 }
 
@@ -81,12 +83,10 @@ export function renderCloseButton (closeButton, closeLabel) {
     <span part="closeLabel">
       <slot name="closeLabel">Close</slot>
     </span>
-  </button>
-  `
+  </button>`
     : '';
 }
 
-/** @TODO: security ! */
 export function renderStylesheetLink (linkStylesheet, stylesheetPath) {
   const cleanCssPath = safeUrl(stylesheetPath);
   return linkStylesheet

@@ -5,7 +5,7 @@ import cssPaths from '../style/index.js';
 export { cssPaths };
 
 /**
- * Paired shortcode to create a `<toggle-popover>` custom element with declarative shadow DOM.
+ * Paired shortcode to create a `<toggle-popover>` custom element.
  *
  * @see https://www.11ty.dev/docs/shortcodes/#paired-shortcodes
  */

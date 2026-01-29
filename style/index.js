@@ -5,5 +5,3 @@ export default function cssPaths () {
     type: 'text/css'
   };
 }
-
-// console.debug('CSS Path:', cssPaths());
