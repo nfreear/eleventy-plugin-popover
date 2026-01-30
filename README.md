@@ -3,7 +3,7 @@
 
 # eleventy-plugin-popover
 
-A plugin for [Eleventy], that defines a paired [shortcode][] to create a `<toggle-popover>` custom element.
+A plugin for [Eleventy][], that defines a paired [shortcode][] to create a `<toggle-popover>` custom element. Uses the [Popover API][] declaratively.
 
 `eleventy.config.js`:
 ```js
@@ -59,6 +59,7 @@ This server-side JavaScript library builds on the follow [Web APIs][]:
 [nunjucks]: https://www.11ty.dev/docs/languages/nunjucks/
 
 [declare]: https://web.dev/articles/declarative-shadow-dom#how_to_build_a_declarative_shadow_root
+[mdn:declare]: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/template#shadowrootmode
 [mdn:anchor]: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Anchor_positioning
 [mdn:custom]: https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements
 [popover api]: https://developer.mozilla.org/en-US/docs/Web/API/Popover_API

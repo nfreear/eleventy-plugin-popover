@@ -1,3 +1,6 @@
+/*
+  Stylesheet linked to from the shadow DOM.
+*/
 
 :host {
   --tp-button-size: 3.2rem;
