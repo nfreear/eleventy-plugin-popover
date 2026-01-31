@@ -10,7 +10,7 @@ export const coreDefaults = {
   anchorPosition: true,
   closeButton: true,
   linkStylesheet: true,
-  stylesheetPath: '/css/toggle-popover.css',
+  stylesheetPath: '/css/toggle-popover.shadow.css',
   className: '',
   buttonIcon: false, // Or tokens: 'hamburger', etc. ??
   hideButtonLabel: false
