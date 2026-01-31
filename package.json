@@ -1,13 +1,13 @@
 {
   "name": "eleventy-plugin-popover",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "type": "module",
   "main": "index.js",
   "exports": {
     ".": "./index.js",
     "./core": "./core/togglePopover.js",
     "./shortcode": "./shortcode/togglePopoverShortcode.js",
-    "./style": "./style/toggle-popover.css"
+    "./style": "./style/toggle-popover.shadow.css"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
@@ -28,7 +28,7 @@
     "style/*"
   ],
   "license": "MIT",
-  "description": "Eleventy plugin and JS library. Shortcode to create a `<toggle-popover>` custom element. Uses the Popover API declaratively.",
+  "description": "Eleventy plugin that defines a shortcode to create a `<toggle-popover>` custom element. It uses the Popover API declaratively.",
   "keywords": [
     "eleventy",
     "eleventy-plugin",
@@ -36,6 +36,7 @@
     "accessibility",
     "custom-element",
     "anchor-positioning",
+    "hamburger",
     "popover",
     "popover-api",
     "toggle-popover"

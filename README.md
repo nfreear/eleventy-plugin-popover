@@ -4,7 +4,7 @@
 
 # eleventy-plugin-popover
 
-A plugin for [Eleventy][], that defines a paired [shortcode][] to create a `<toggle-popover>` custom element. Uses the [Popover API][] declaratively.
+A plugin for [Eleventy][], that defines a paired [shortcode][] to create a `<toggle-popover>` custom element. It uses the [Popover API][] declaratively.
 
 `eleventy.config.js`:
 ```js
@@ -17,9 +17,9 @@ export default async function (eleventyConfig) {
 }
 ```
 
-### Usage
+### Shortcode Usage
 
-In your [Liquid][] or [Nunjucks][] template:
+Use the shortcode in your [Liquid][] or [Nunjucks][] template:
 
 ```html
 {% togglePopover 'Translations' %}
@@ -31,6 +31,22 @@ In your [Liquid][] or [Nunjucks][] template:
     </ul>
   </nav>
 {% endtogglePopover %}
+```
+
+## Hamburger Popover Shortcode
+
+There is also a `hamburgerPopover` shortcode:
+
+```html
+{% hamburgerPopover 'Toggle menu' %}
+  <nav>
+    <ul>
+      <li><a href="pageOne">Page One</a>
+      <li><a href="pageTwo">Page Two</a>
+      <li><a href="pageThree…">Page Three …</a>
+    </ul>
+  </nav>
+{% endhamburgerPopover %}
 ```
 
 ## Used APIs
