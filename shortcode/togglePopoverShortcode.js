@@ -31,7 +31,7 @@ export default function togglePopoverShortcode (eleventyConfig, options = {}) {
 
   const stylesheetPath = `${cssOutputDir}/${cssPaths().filename}`;
 
-  eleventyConfig.addPairedShortcode(shortcode, function (content, buttonLabel = defaultButtonLabel, anchorPosition = defaultAnchorPosition) {
+  eleventyConfig.addPairedShortcode(shortcode, function (content, buttonLabel = defaultButtonLabel, className = '', anchorPosition = defaultAnchorPosition) {
     // console.log('ENV:', this.eleventy.env);
 
     return renderTogglePopover(content, {
@@ -40,17 +40,19 @@ export default function togglePopoverShortcode (eleventyConfig, options = {}) {
       anchorPosition,
       linkStylesheet: copyStyleFile,
       stylesheetPath,
+      className,
     });
   });
 
   if (hamburgerShortcode) {
-    eleventyConfig.addPairedShortcode(hamburgerShortcode, function (content, buttonLabel = defaultButtonLabel, anchorPosition = defaultAnchorPosition) {
+    eleventyConfig.addPairedShortcode(hamburgerShortcode, function (content, buttonLabel = defaultButtonLabel, className = '', anchorPosition = defaultAnchorPosition) {
       return renderTogglePopover(content, {
         elementName,
         buttonLabel,
         anchorPosition,
         linkStylesheet: copyStyleFile,
         stylesheetPath,
+        className,
         buttonIcon: 'line',
         hideButtonLabel: true
       });

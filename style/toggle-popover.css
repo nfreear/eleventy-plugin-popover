@@ -47,7 +47,7 @@ internal-root {
     [ part = hr ],
     [ part = buttonLine ] {
       display: block;
-      border-top: 3px solid currentColor;
+      border-top: 2px solid currentColor;
       border-radius: 4px;
       margin: var(--tp-button-gap, .5rem) 0;
     }

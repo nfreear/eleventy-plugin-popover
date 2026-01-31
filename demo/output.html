@@ -12,44 +12,36 @@
 
 
 
-<toggle-popover>
+<toggle-popover class="red-border">
   <template shadowrootmode="open">
     <link rel="stylesheet" href="/css/toggle-popover.css">
-
     <internal-root data-anchor-position>
-      <button part="button" popovertarget="myID" aria-label="Translations">
+      <button part="button" popovertarget="myID">
         <span part="buttonLabel">
-          <slot name="buttonLabel">Button label</slot>
+          <slot name="buttonLabel">Translations</slot>
         </span>
       </button>
       <div part="popover" id="myID" popover>
-        <button part="closeButton" popovertarget="myID" aria-label="Close">
-          <span part="closeLabel">
-            <slot name="closeLabel">Close</slot>
-          </span>
+        <button part="closeButton" popovertarget="myID">
+          <span part="closeLabel">Close</span>
         </button>
-        <slot name="popoverContent">Popover content</slot>
+        <slot>Popover content</slot>
       </div>
     </internal-root>
   </template>
 
-  <span slot="buttonLabel">Translations</span>
-  <span slot="closeLabel">Close</span>
-  <div slot="popoverContent">
+  <nav aria-label="Translations" id="translations">
+    <ul>
+      <li><a href="#ar" lang="ar">اَلْعَرَبِيَّةُ <i lang="en">(Arabic)</i></a>
+      <li><a href="#en" lang="en">English</a>
+      <li><a href="#es" lang="es">Español</a>
+      <li><a href="#fr" lang="fr">Français</a>
+      <li><a href="#zh-Hans" lang="zh-Hans">简化字 <i lang="en">(Simplified Chinese)</i></a>
+      <li><a href="#zh-Hant" lang="zh-Hant">正體字 <i lang="en">(Traditional Chinese)</i></a>
+      <li><a href="#…" lang="…">…</a>
+    </ul>
+  </nav>
 
-    <nav aria-label="Translations" id="translations">
-      <ul>
-        <li><a href="#ar" lang="ar">اَلْعَرَبِيَّةُ <i lang="en">(Arabic)</i></a>
-        <li><a href="#en" lang="en">English</a>
-        <li><a href="#es" lang="es">Español</a>
-        <li><a href="#fr" lang="fr">Français</a>
-        <li><a href="#zh-Hans" lang="zh-Hans">简化字 <i lang="en">(Simplified Chinese)</i></a>
-        <li><a href="#zh-Hant" lang="zh-Hant">正體字 <i lang="en">(Traditional Chinese)</i></a>
-        <li><a href="#…" lang="…">…</a>
-      </ul>
-    </nav>
-
-  </div>
 </toggle-popover>
 
 

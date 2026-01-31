@@ -24,6 +24,12 @@ toggle-popover {
       }
     }
   }
+
+  &.red-border {
+    &::part(button) {
+      border-color: red;
+    }
+  }
 }
 
 body {

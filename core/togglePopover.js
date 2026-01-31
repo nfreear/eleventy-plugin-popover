@@ -1,4 +1,4 @@
-import { stripHtml, safeUrl, safeToken, safeTagName } from './utilities.js';
+import { safeUrl, safeToken, safeTagName, safeClassName } from './utilities.js';
 
 /**
  * Core library function to render the `<toggle-popover>` custom element.
@@ -11,6 +11,7 @@ export const coreDefaults = {
   closeButton: true,
   linkStylesheet: true,
   stylesheetPath: '/css/toggle-popover.css',
+  className: '',
   buttonIcon: false, // Or tokens: 'hamburger', etc. ??
   hideButtonLabel: false
 };
@@ -20,37 +21,31 @@ export function togglePopover (htmlContent, options = {}) {
 
   const {
     elementName, buttonLabel, closeLabel, closeButton, anchorPosition,
-    buttonIcon, linkStylesheet, stylesheetPath, hideButtonLabel
+    buttonIcon, linkStylesheet, stylesheetPath, hideButtonLabel, className
   } = OPT;
 
-  const buttonText = stripHtml(buttonLabel);
+  // const buttonText = stripHtml(buttonLabel);
   const tagName = safeTagName(elementName);
+  const theClass = safeClassName(className);
 
   return `
-<${tagName}>
+<${tagName} class="${theClass}">
 <template shadowrootmode="open">
   ${renderStylesheetLink(linkStylesheet, stylesheetPath)}
-
   <internal-root ${renderAttributes(anchorPosition, hideButtonLabel, buttonIcon)}>
-  <button part="button" popovertarget="myID" aria-label="${buttonText}">
+  <button part="button" popovertarget="myID">
     <span part="buttonLabel">
-      <slot name="buttonLabel">Button label</slot>
+      <slot name="buttonLabel">${buttonLabel}</slot>
     </span>
     ${renderButtonIcon(buttonIcon)}
   </button>
   <div part="popover" id="myID" popover>
     ${renderCloseButton(closeButton, closeLabel)}
-    <slot name="popoverContent">Popover content</slot>
+    <slot>Popover content</slot>
   </div>
-
   </internal-root>
 </template>
-
-<span slot="buttonLabel">${buttonLabel}</span>
-<span slot="closeLabel">${closeLabel}</span>
-<div slot="popoverContent">
-  ${htmlContent}
-</div>
+${htmlContent}
 </${tagName}>
   `;
 }
@@ -76,13 +71,11 @@ export function renderButtonIcon (buttonIcon) {
 }
 
 export function renderCloseButton (closeButton, closeLabel) {
-  const closeText = stripHtml(closeLabel);
+  // const closeText = stripHtml(closeLabel);
   return closeButton
     ? `
-  <button part="closeButton" popovertarget="myID" aria-label="${closeText}">
-    <span part="closeLabel">
-      <slot name="closeLabel">Close</slot>
-    </span>
+  <button part="closeButton" popovertarget="myID">
+    <span part="closeLabel">${closeLabel}</span>
   </button>`
     : '';
 }

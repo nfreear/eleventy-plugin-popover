@@ -1,5 +1,6 @@
 
 [![Node.js][ci-badge]][ci]
+[![NPM registry][npm-badge]][npm]
 
 # eleventy-plugin-popover
 
@@ -72,3 +73,5 @@ This server-side JavaScript library builds on the follow [Web APIs][]:
 
 [ci]: https://github.com/nfreear/eleventy-plugin-popover/actions/workflows/node.js.yml
 [ci-badge]: https://github.com/nfreear/eleventy-plugin-popover/actions/workflows/node.js.yml/badge.svg
+[npm]: https://www.npmjs.com/package/eleventy-plugin-popover
+[npm-badge]: https://img.shields.io/npm/v/eleventy-plugin-popover

@@ -23,3 +23,10 @@ export function safeTagName (inputTag) {
   }
   return inputTag;
 }
+
+export function safeClassName (inputClass) {
+  if (inputClass && !/^[\w-_ ]+$/.test(inputClass)) {
+    throw new Error(`Invalid className: ${inputClass}`);
+  }
+  return inputClass;
+}
