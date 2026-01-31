@@ -8,6 +8,13 @@
   --tp-close-size: 1.9rem;
   --tp-hamburger-character: '≡'; /* U+2261 ≡ IDENTICAL TO */
   --tp-close-character: '×'; /* U+00D7 × MULTIPLICATION SIGN (&times;) */
+  --tp-transition: 250ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host {
+    --tp-transition: 0;
+  }
 }
 
 @supports (position-anchor: --my-name) {
@@ -34,6 +41,15 @@ internal-root {
 
   [ popover ] {
     padding: .5rem .5rem 1rem 1rem;
+
+    [ part = closeButton ] {
+      &:focus,
+      &:hover {
+        box-shadow: var(--tp-focus-shadow);
+        color: var(--tp-focus-icon-color);
+        transition: all var(--tp-transition);
+      }
+    }
   }
 }
 
@@ -50,6 +66,15 @@ internal-root {
       border-top: 2px solid currentColor;
       border-radius: 4px;
       margin: var(--tp-button-gap, .5rem) 0;
+    }
+
+    &:focus,
+    &:hover {
+      [ part = hr ] {
+        border-color: var(--tp-focus-icon-color);
+        box-shadow: var(--tp-focus-shadow);
+        transition: all var(--tp-transition);
+      }
     }
   }
 }
