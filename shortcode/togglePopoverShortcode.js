@@ -1,5 +1,5 @@
 import renderTogglePopover from '../core/togglePopover.js';
-import copyStylesheetPlugin from './copyStylesheetPlugin.js';
+import copyStyleAndScriptPlugin from './copyStylesheetPlugin.js';
 import cssPaths from '../style/index.js';
 
 export { cssPaths };
@@ -17,6 +17,9 @@ export const shortcodeDefaults = {
   defaultAnchorPosition: true,
   copyStyleFile: true, // Implies copy and link ??
   cssOutputDir: '/css',
+  stylesheetPath: './css/toggle-popover.shadow.css', // Path fixed!
+  copyScriptFile: true,
+  jsOutputDir: '/js',
   buttonIcon: false, // Or tokens: 'hamburger', etc. ??
   hideButtonLabel: false
 };
@@ -26,10 +29,9 @@ export default function togglePopoverShortcode (eleventyConfig, options = {}) {
 
   const {
     shortcode, elementName, defaultButtonLabel, defaultAnchorPosition,
-    hamburgerShortcode, copyStyleFile, cssOutputDir
+    hamburgerShortcode, copyStyleFile, cssOutputDir, stylesheetPath,
+    copyScriptFile, jsOutputDir
   } = OPT;
-
-  const stylesheetPath = `${cssOutputDir}/${cssPaths().filename}`;
 
   eleventyConfig.addPairedShortcode(shortcode, function (content, buttonLabel = defaultButtonLabel, className = '', anchorPosition = defaultAnchorPosition) {
     // console.log('ENV:', this.eleventy.env);
@@ -59,5 +61,5 @@ export default function togglePopoverShortcode (eleventyConfig, options = {}) {
     });
   }
 
-  copyStylesheetPlugin(eleventyConfig, { copyStyleFile, cssOutputDir });
+  copyStyleAndScriptPlugin(eleventyConfig, { copyStyleFile, cssOutputDir, copyScriptFile, jsOutputDir });
 }

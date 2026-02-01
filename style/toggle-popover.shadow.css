@@ -87,7 +87,7 @@ internal-root {
 
     /* https://en.wikipedia.org/wiki/Hamburger_button */
     &::after {
-      content: var(--tp-hamburger-character, '≡'); /* U+2261 ≡ IDENTICAL TO */
+      content: var(--tp-hamburger-character, '≡') / ''; /* U+2261 ≡ IDENTICAL TO */
       X_content: '☰'; /* U+2630 ☰ TRIGRAM FOR HEAVEN */
       font-size: 3.5rem;
       line-height: 1rem;
@@ -104,7 +104,7 @@ internal-root {
 
     /* https://en.wikipedia.org/wiki/Hamburger_button */
     &::after {
-      content: '𓃑'; /* U+130D1 𓃑 EGYPTIAN HIEROGLYPH D067H */
+      content: '𓃑' / ''; /* U+130D1 𓃑 EGYPTIAN HIEROGLYPH D067H */
       font-size: 1.65rem;
       line-height: 1rem;
       vertical-align: middle;
@@ -120,7 +120,7 @@ internal-root {
     width: var(--tp-close-size, 1.8rem);
 
     &::after {
-      content: var(--tp-close-character, 'X');
+      content: var(--tp-close-character, 'X') / '';
       font-size: 1.5rem;
       vertical-align: middle;
     }

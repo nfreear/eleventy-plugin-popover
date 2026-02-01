@@ -28,7 +28,18 @@ toggle-popover {
     }
   }
 
-  #translations {
+  &.translation-nav {
+    &::part(button):before {
+      content: '▶'; /* &#9654;	&#x25B6; */
+      display: inline-block;
+    }
+
+    &::part(buttonOpen):before {
+      X_content: '▼'; /* ▼	Black Down-pointing Triangle	&#9660;	&#x25BC; */
+      transform: rotate(90deg);
+      transition: all 250ms;
+    }
+
     ul {
       min-width: 11rem;
 
@@ -42,6 +53,10 @@ toggle-popover {
     &::part(button) {
       border-color: red;
     }
+  }
+
+  &::part(buttonOpen) {
+    X_border-color: red;
   }
 }
 

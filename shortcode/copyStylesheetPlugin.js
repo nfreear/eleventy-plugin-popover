@@ -1,9 +1,14 @@
 import PKG from '../core/package-json.js';
 
 /**
- *
+ * Copy both stylesheet and browser JavaScript files.
  */
-export default function copyStylesheetPlugin (eleventyConfig, options = {}) {
+export default function copyStyleAndScriptPlugin (eleventyConfig, options = {}) {
+  copyStylesheetFile(eleventyConfig, options);
+  copyJavascriptFile(eleventyConfig, options);
+}
+
+export function copyStylesheetFile (eleventyConfig, options) {
   const { copyStyleFile, cssOutputDir } = options;
 
   if (copyStyleFile) {
@@ -11,6 +16,17 @@ export default function copyStylesheetPlugin (eleventyConfig, options = {}) {
     cssCopy[`${getPkgPath()}/style/*.css`] = cssOutputDir;
 
     eleventyConfig.addPassthroughCopy(cssCopy);
+  }
+}
+
+export function copyJavascriptFile (eleventyConfig, options) {
+  const { copyScriptFile, jsOutputDir } = options;
+
+  if (copyScriptFile) {
+    const jsCopy = {};
+    jsCopy[`${getPkgPath()}/browser/*.js`] = jsOutputDir;
+
+    eleventyConfig.addPassthroughCopy(jsCopy);
   }
 }
 

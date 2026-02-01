@@ -10,7 +10,7 @@ export const coreDefaults = {
   anchorPosition: true,
   closeButton: true,
   linkStylesheet: true,
-  stylesheetPath: '/css/toggle-popover.shadow.css',
+  stylesheetPath: './css/toggle-popover.shadow.css',
   className: '',
   buttonIcon: false, // Or tokens: 'hamburger', etc. ??
   hideButtonLabel: false
@@ -64,7 +64,7 @@ export function renderAttributes (anchorPosition, hideButtonLabel, buttonIcon) {
 export function renderButtonIcon (buttonIcon) {
   return buttonIcon
     ? `
-<span part="buttonIcon">
+<span part="buttonIcon" aria-hidden="true">
   <i part="hr"></i><i part="hr"></i><i part="hr"></i>
 </span>`
     : '';

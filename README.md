@@ -6,6 +6,8 @@
 
 A plugin for [Eleventy][], that defines a paired [shortcode][] to create a `<toggle-popover>` custom element. It uses the [Popover API][] declaratively.
 
+Used in [mobile theme — Dive Into Accessibility repository][dia].
+
 `eleventy.config.js`:
 ```js
 import togglePopoverShortcode from 'eleventy-plugin-popover';
@@ -74,6 +76,7 @@ This server-side JavaScript library builds on the follow [Web APIs][]:
 [shortcode]: https://www.11ty.dev/docs/shortcodes/#paired-shortcodes
 [liquid]: https://www.11ty.dev/docs/languages/liquid/
 [nunjucks]: https://www.11ty.dev/docs/languages/nunjucks/
+[dia]: https://github.com/nfreear/diveintoaccessibility/blob/revive/plugins/mobile-theme/_includes/en/header.njk#L13-L16
 
 [declare]: https://web.dev/articles/declarative-shadow-dom#how_to_build_a_declarative_shadow_root
 [mdn:declare]: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/template#shadowrootmode
