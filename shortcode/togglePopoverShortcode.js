@@ -17,7 +17,7 @@ export const shortcodeDefaults = {
   defaultAnchorPosition: true,
   copyStyleFile: true, // Implies copy and link ??
   cssOutputDir: '/css',
-  stylesheetPath: './css/toggle-popover.shadow.css', // Path fixed!
+  stylesheetPath: '/css/toggle-popover.shadow.css', // Path fixed!
   copyScriptFile: true,
   jsOutputDir: '/js',
   buttonIcon: false, // Or tokens: 'hamburger', etc. ??

@@ -1,6 +1,6 @@
 
 :root {
-  --theme-color: teal;
+  --theme-color: #0C4C54; /* dark teal */
 }
 
 toggle-popover {
@@ -30,12 +30,14 @@ toggle-popover {
 
   &.translation-nav {
     &::part(button):before {
-      content: '▶'; /* &#9654;	&#x25B6; */
+      color: var(--theme-color);
+      content: '▶'; /* Black Right-pointing Triangle &#9654;	&#x25B6; */
       display: inline-block;
+      transition: all 250ms;
     }
 
     &::part(buttonOpen):before {
-      X_content: '▼'; /* ▼	Black Down-pointing Triangle	&#9660;	&#x25BC; */
+      X_content: '▼'; /* Black Down-pointing Triangle	&#9660;	&#x25BC; */
       transform: rotate(90deg);
       transition: all 250ms;
     }

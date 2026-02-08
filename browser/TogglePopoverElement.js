@@ -1,7 +1,7 @@
 const { customElements, HTMLElement } = window;
 
 /**
- * Optional custom element class, to set a flag when popover is toggled.
+ * Optional custom element class, to set a flag in the browser when popover is toggled.
  *
  * @customElement toggle-popover
  */
@@ -12,7 +12,7 @@ export class TogglePopoverElement extends HTMLElement {
   connectedCallback () {
     console.assert(this.shadowRoot, 'shadowRoot missing');
 
-    this.#tempFixStylesheetPath();
+    // @was: this.#tempFixStylesheetPath();
 
     this.#buttonElem = this.shadowRoot.querySelector('button');
     this.#popoverElem = this.shadowRoot.querySelector('[ popover ]');
@@ -30,6 +30,7 @@ export class TogglePopoverElement extends HTMLElement {
     console.debug('toggle:', partAttr, ev);
   }
 
+  /** @deprecated */
   #tempFixStylesheetPath () {
     const linkElem = this.shadowRoot.querySelector('link[ rel = stylesheet ]');
     console.assert(linkElem, '<link> element not found in shadowRoot.');
@@ -40,6 +41,6 @@ export class TogglePopoverElement extends HTMLElement {
   }
 }
 
-export default function defineTogglePopoverElement () {
-  customElements.define('toggle-popover', TogglePopoverElement);
+export default function defineTogglePopoverElement (tagName = 'toggle-popover') {
+  customElements.define(tagName, TogglePopoverElement);
 }
